@@ -42,3 +42,7 @@ while True:
             zgodovina.pop(0)
     else:
         print("Napačna izbira!")
+
+        # Testni komentar za amend
+
+        
