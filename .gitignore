@@ -1,0 +1,12 @@
+# Pythonovi ostanki
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ostanki urejevalnikov
+.vscode/
+.idea/
+
+# Lokalna zgodovina (če ne želiš, da se datoteka iz prejšnje naloge sync-a)
+zgodovina.txt
