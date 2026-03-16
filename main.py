@@ -1,54 +1,44 @@
-def sestej(a, b):
-    return a + b
-
-def odstej(a, b):
-    return a - b
-
-def pomnozi(a, b):
-    return a * b
-
+def sestej(a, b): return a + b
+def odstej(a, b): return a - b
+def pomnozi(a, b): return a * b
 def deli(a, b):
-    if b == 0:
-        return "Napaka: Deljenje z 0 ni dovoljeno!"
+    if b == 0: return "Napaka: Deljenje z 0!"
     return a / b
 
-# Glavna zanka programa (Naloga #3)
+zgodovina = [] # TUKAJ SE SHRANJUJEJO REZULTATI
+
 while True:
     print("\n--- Mini kalkulator ---")
-    print("1 = seštevanje")
-    print("2 = odštevanje")
-    print("3 = množenje")
-    print("4 = deljenje")
-    print("0 = IZHOD")
-    
-    izbira = input("\nIzberi operacijo (0-4): ")
+    print("1=+, 2=-, 3=*, 4=/, 0=IZHOD, 5=ZGODOVINA")
+    izbira = input("Izbira: ")
 
-    # Preverimo, če želi uporabnik končati (Naloga #3)
     if izbira == "0":
-        print("Hvala, ker si uporabljal kalkulator. Nasvidenje!")
+        print("Nasvidenje!")
         break
+    
+    if izbira == "5":
+        print("\n--- Zadnji 3 izračuni ---")
+        if not zgodovina:
+            print("Zgodovina je prazna.")
+        for vnos in zgodovina:
+            print(vnos)
+        continue
 
-    # Preverimo, če je izbira veljavna
     if izbira in ("1", "2", "3", "4"):
-        try:
-            x = float(input("Vnesi prvo število: "))
-            y = float(input("Vnesi drugo število: "))
-            
-            # Lepši izpisi rezultatov (Naloga #4)
-            if izbira == "1":
-                print(f"\nRezultat: {x} + {y} = {sestej(x, y)}")
-            elif izbira == "2":
-                print(f"\nRezultat: {x} - {y} = {odstej(x, y)}")
-            elif izbira == "3":
-                print(f"\nRezultat: {x} * {y} = {pomnozi(x, y)}")
-            elif izbira == "4":
-                rezultat = deli(x, y)
-                if isinstance(rezultat, str): # Če je napaka (tekst)
-                    print(f"\n{rezultat}")
-                else:
-                    print(f"\nRezultat: {x} / {y} = {rezultat}")
+        x = float(input("Prvo število: "))
+        y = float(input("Drugo število: "))
         
-        except ValueError:
-            print("\nNapaka: Prosim vnesi številko!")
+        rezultat_izpisa = ""
+        if izbira == "1": rezultat_izpisa = f"{x} + {y} = {sestej(x, y)}"
+        elif izbira == "2": rezultat_izpisa = f"{x} - {y} = {odstej(x, y)}"
+        elif izbira == "3": rezultat_izpisa = f"{x} * {y} = {pomnozi(x, y)}"
+        elif izbira == "4": rezultat_izpisa = f"{x} / {y} = {deli(x, y)}"
+        
+        print(f"Rezultat: {rezultat_izpisa}")
+        
+        # Dodajanje v zgodovino in ohranjanje samo zadnjih 3
+        zgodovina.append(rezultat_izpisa)
+        if len(zgodovina) > 3:
+            zgodovina.pop(0)
     else:
-        print("\nNeveljavna izbira, poskusi ponovno.")
+        print("Napačna izbira!")
