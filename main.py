@@ -36,4 +36,12 @@ while True:
         except ValueError:
             print("Napaka: Vnesi veljavno številko!")
     else:
+ feature/vaja-amend
+        print("Napačna izbira!")
+
+        # Testni komentar za amend
+
+        
+
         print("Neveljavna izbira, poskusi znova.")
+ main
